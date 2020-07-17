@@ -8,17 +8,21 @@
 
 import UIKit
 
-class MemoTableViewController: UITableViewController {
+class MemoTableViewController: UITableViewController, UISearchBarDelegate {
 
     //앱 델리게이트 참조 정보 가져옴
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     lazy var dao = MemoDAO()
+    @IBOutlet var searchBar: UISearchBar!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
+        //검색바에 아무것도 누르지 않아도 리턴키 누를 수 있도록
+        searchBar.enablesReturnKeyAutomatically = false
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -107,6 +111,15 @@ class MemoTableViewController: UITableViewController {
         
     }
     
+    
+    //UISearchBar DataSource
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        let keyword = searchBar.text //검색바의 텍스트 가져옴
+        
+        //데이터 검색, 테이블 뷰 갱신
+        self.appDelegate.memolist = self.dao.fetch(keyword: keyword)
+        self.tableView.reloadData()
+    }
 
 
 }
