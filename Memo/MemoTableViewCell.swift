@@ -10,6 +10,13 @@ import UIKit
 
 class MemoTableViewCell: UITableViewCell {
 
+    //MARK: Properties
+    @IBOutlet var img: UIImageView!
+    @IBOutlet var subject: UILabel!
+    @IBOutlet var contents: UILabel!
+    @IBOutlet var regdate: UILabel!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

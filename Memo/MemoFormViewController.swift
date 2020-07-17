@@ -55,8 +55,39 @@ class MemoFormViewController: UIViewController, UIImagePickerControllerDelegate,
         picker.delegate = self
         picker.allowsEditing = true
         
-        //이미지 피커 화면 표시
-        self.present(picker, animated: false)
+        //알림창 객체 생성
+        let alert = UIAlertController(title: nil, message: "이미지를 가져올 곳을 선택해주세요", preferredStyle: .actionSheet)
+        
+        //카메라
+        let camera = UIAlertAction(title: "카메라", style: .default) { (_) in
+            if UIImagePickerController.isSourceTypeAvailable(.camera){
+                picker.sourceType = .camera
+                //이미지 피커 화면 표시
+                self.present(picker, animated: false)
+            }
+        }
+        //저장 앨범
+        let savedAlbum = UIAlertAction(title: "저장앨범", style: .default) {(_) in
+            picker.sourceType = .savedPhotosAlbum
+            self.present(picker, animated: false)
+        }
+        //사진 라이브러리
+        let photoLibrary = UIAlertAction(title: "사진 라이브러리", style: .default){ (_) in
+            picker.sourceType = .photoLibrary
+            self.present(picker, animated: false)
+        }
+        
+        //취소
+        let cancel = UIAlertAction(title: "취소", style: .cancel)
+        
+        alert.addAction(camera)
+        alert.addAction(savedAlbum)
+        alert.addAction(photoLibrary)
+        alert.addAction(cancel)
+        
+        //알림창 실행
+        self.present(alert, animated: false)
+        
     }
     
     //MARK: UITextViewDelegate
