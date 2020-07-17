@@ -11,6 +11,7 @@ import UIKit
 class MemoFormViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextViewDelegate{
     //MARK: Properties
     var subject: String!    //제목
+    lazy var dao = MemoDAO()
     
     @IBOutlet var contents: UITextView!
     @IBOutlet var preview: UIImageView!
@@ -40,8 +41,13 @@ class MemoFormViewController: UIViewController, UIImagePickerControllerDelegate,
         data.regdate = Date()
         
         //앱 델리게이트 객체를 읽어 memolist 배열에 MemoData 객체를 추가
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        appDelegate.memolist.append(data)
+//        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+//        appDelegate.memolist.append(data)
+//        appDelegate에 저장시켰던 것을 코어데이터에 저장하는 방식으로 바꾸므로 없앤다. 단, 데이터를 불러올 때는 appDelgate의 memolist에 저장시켜서 표현
+        
+        //코어데이터에 메모데이터를 추가
+        self.dao.insert(data)
+        
         
         //작성 폼 화면을 종료 후 이전 화면으로 돌아가기
         self.navigationController?.popViewController(animated: true)

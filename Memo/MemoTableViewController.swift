@@ -13,6 +13,8 @@ class MemoTableViewController: UITableViewController {
     //앱 델리게이트 참조 정보 가져옴
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
+    lazy var dao = MemoDAO()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +28,9 @@ class MemoTableViewController: UITableViewController {
     
     //뷰가 화면에 출력되면 호출
     override func viewWillAppear(_ animated: Bool) {
+        
+        //코어 데이터에 저장된 데이터를 가져옴
+        self.appDelegate.memolist = self.dao.fetch()
         
         //테이블 데이터 리로드
         self.tableView.reloadData()
@@ -84,49 +89,24 @@ class MemoTableViewController: UITableViewController {
         vc.param = row
         self.navigationController?.pushViewController(vc, animated: true)
     }
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
+    
 
-    /*
-    // Override to support editing the table view.
+    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .delete
+    }
+    
+    
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+        let data = self.appDelegate.memolist[indexPath.row]
+        
+        //코어 데이터에서 삭제하고 배열 내 데이터, 테이블 뷰 행을 삭제한다.
+        if dao.delete(data.objectID!) {
+            self.appDelegate.memolist.remove(at: indexPath.row)
+            self.tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+        
     }
-    */
+    
 
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
