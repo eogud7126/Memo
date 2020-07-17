@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="4bP-Qm-Pxf">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
@@ -191,10 +191,22 @@
                     </view>
                     <navigationItem key="navigationItem" title="메모 작성" id="ZMu-CT-Lay">
                         <rightBarButtonItems>
-                            <barButtonItem systemItem="camera" id="tAj-jp-E1R"/>
-                            <barButtonItem title="저장" id="FaQ-Hm-5bg"/>
+                            <barButtonItem systemItem="camera" id="tAj-jp-E1R">
+                                <connections>
+                                    <action selector="pick:" destination="qYr-oR-mag" id="EBC-DD-O89"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="저장" id="FaQ-Hm-5bg">
+                                <connections>
+                                    <action selector="save:" destination="qYr-oR-mag" id="aVH-K5-AzU"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
+                    <connections>
+                        <outlet property="contents" destination="vPE-1f-13G" id="aef-dk-W7t"/>
+                        <outlet property="preview" destination="kOW-iA-ckv" id="gg7-LE-HGF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LjY-TF-zvG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
