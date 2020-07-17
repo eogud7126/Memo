@@ -18,6 +18,7 @@
 		CE02022724C16B38004CBC89 /* MemoReadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE02022624C16B38004CBC89 /* MemoReadViewController.swift */; };
 		CE02022924C16B4D004CBC89 /* MemoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE02022824C16B4D004CBC89 /* MemoTableViewCell.swift */; };
 		CE02022B24C16BB5004CBC89 /* MemoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE02022A24C16BB5004CBC89 /* MemoData.swift */; };
+		CE02022D24C17F26004CBC89 /* CSLogButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE02022C24C17F26004CBC89 /* CSLogButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		CE02022624C16B38004CBC89 /* MemoReadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoReadViewController.swift; sourceTree = "<group>"; };
 		CE02022824C16B4D004CBC89 /* MemoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoTableViewCell.swift; sourceTree = "<group>"; };
 		CE02022A24C16BB5004CBC89 /* MemoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoData.swift; sourceTree = "<group>"; };
+		CE02022C24C17F26004CBC89 /* CSLogButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSLogButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,13 +70,14 @@
 			children = (
 				CE02020B24C160CC004CBC89 /* AppDelegate.swift */,
 				CE02020D24C160CC004CBC89 /* SceneDelegate.swift */,
-				CE02021124C160CC004CBC89 /* Main.storyboard */,
 				CE02022224C16B10004CBC89 /* MemoTableViewController.swift */,
 				CE02022424C16B23004CBC89 /* MemoFormViewController.swift */,
 				CE02022624C16B38004CBC89 /* MemoReadViewController.swift */,
 				CE02022824C16B4D004CBC89 /* MemoTableViewCell.swift */,
 				CE02022A24C16BB5004CBC89 /* MemoData.swift */,
+				CE02022C24C17F26004CBC89 /* CSLogButton.swift */,
 				CE02021724C160CD004CBC89 /* Assets.xcassets */,
+				CE02021124C160CC004CBC89 /* Main.storyboard */,
 				CE02021924C160CD004CBC89 /* LaunchScreen.storyboard */,
 				CE02021C24C160CD004CBC89 /* Info.plist */,
 				CE02021424C160CC004CBC89 /* Memo.xcdatamodeld */,
@@ -153,6 +156,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE02022D24C17F26004CBC89 /* CSLogButton.swift in Sources */,
 				CE02022724C16B38004CBC89 /* MemoReadViewController.swift in Sources */,
 				CE02022B24C16BB5004CBC89 /* MemoData.swift in Sources */,
 				CE02022524C16B23004CBC89 /* MemoFormViewController.swift in Sources */,
